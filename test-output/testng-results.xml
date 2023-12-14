@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-12-14T16:15:16 IST" name="Suite" finished-at="2023-12-14T16:17:04 IST" duration-ms="107652">
+    <groups>
+    </groups>
+    <test started-at="2023-12-14T16:15:16 IST" name="Test_Chrome" finished-at="2023-12-14T16:15:24 IST" duration-ms="7435">
+      <class name="testcase.LoginTests">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@4d1c005e]" started-at="2023-12-14T16:15:17 IST" name="setUp" finished-at="2023-12-14T16:15:21 IST" duration-ms="3234" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://hrm.qabible.in/hrms/admin]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="LoginTest(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@4d1c005e]" started-at="2023-12-14T16:15:21 IST" name="LoginTest" data-provider="testdata" finished-at="2023-12-14T16:15:24 IST" duration-ms="3102" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:testcase.LoginTests@4d1c005e]" started-at="2023-12-14T16:15:24 IST" name="takeScreenshotOnFailure" finished-at="2023-12-14T16:15:24 IST" duration-ms="177" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=LoginTests.LoginTest(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@4d1c005e] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+      </class> <!-- testcase.LoginTests -->
+    </test> <!-- Test_Chrome -->
+    <test started-at="2023-12-14T16:15:24 IST" name="Test_Firefox" finished-at="2023-12-14T16:16:14 IST" duration-ms="49605">
+      <class name="testcase.LoginTests">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@4d15107f]" started-at="2023-12-14T16:15:24 IST" name="setUp" finished-at="2023-12-14T16:16:11 IST" duration-ms="47113" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://hrm.qabible.in/hrms/admin]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="LoginTest(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@4d15107f]" started-at="2023-12-14T16:16:11 IST" name="LoginTest" data-provider="testdata" finished-at="2023-12-14T16:16:13 IST" duration-ms="1261" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:testcase.LoginTests@4d15107f]" started-at="2023-12-14T16:16:13 IST" name="takeScreenshotOnFailure" finished-at="2023-12-14T16:16:14 IST" duration-ms="1132" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=LoginTests.LoginTest(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@4d15107f] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+      </class> <!-- testcase.LoginTests -->
+    </test> <!-- Test_Firefox -->
+    <test started-at="2023-12-14T16:16:14 IST" name="Test_Edge" finished-at="2023-12-14T16:17:04 IST" duration-ms="50220">
+      <class name="testcase.LoginTests">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@79207381]" started-at="2023-12-14T16:16:14 IST" name="setUp" finished-at="2023-12-14T16:16:59 IST" duration-ms="44828" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://hrm.qabible.in/hrms/admin]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="LoginTest(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@79207381]" started-at="2023-12-14T16:16:59 IST" name="LoginTest" data-provider="testdata" finished-at="2023-12-14T16:17:04 IST" duration-ms="5098" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:testcase.LoginTests@79207381]" started-at="2023-12-14T16:17:04 IST" name="takeScreenshotOnFailure" finished-at="2023-12-14T16:17:04 IST" duration-ms="211" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=LoginTests.LoginTest(java.lang.String,java.lang.String)[pri:0, instance:testcase.LoginTests@79207381] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+      </class> <!-- testcase.LoginTests -->
+    </test> <!-- Test_Edge -->
+  </suite> <!-- Suite -->
+</testng-results>
