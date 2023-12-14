@@ -53,7 +53,7 @@ public class AssetTests extends BaseTest {
         String month = parts[1];
         String year = parts[2];        
         objasset.setpurDate(day, month, year);
-        Thread.sleep(4000);
+
         objasset.strinvoice(Invoice);
         objasset.strmanu(manufacture);
         objasset.strserielnum(Serielnum);
@@ -64,7 +64,7 @@ public class AssetTests extends BaseTest {
         objasset.setwarranty(day1, month1, year1);
         objasset.clickfileUpload();
         objasset.clicksave();
-        Thread.sleep(3000);
+      
     
         
 
