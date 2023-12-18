@@ -3,13 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcase.EventsTest">
+      <class name="testcase.EmployeeTest">
         <methods>
           <include name="takeScreenshotOnFailure"/>
+          <include name="employee_details"/>
+          <include name="employee_blank_details"/>
           <include name="setUp"/>
-          <include name="LoginTest"/>
+          <include name="employee_skipped_employeeId"/>
+          <include name="employee_skipped_lastname"/>
         </methods>
-      </class> <!-- testcase.EventsTest -->
+      </class> <!-- testcase.EmployeeTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

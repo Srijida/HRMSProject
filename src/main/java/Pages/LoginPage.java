@@ -24,6 +24,10 @@ public class LoginPage {
     
     @FindBy(xpath = "//div[@class='widget-user-header']")
     WebElement welcome;
+    
+    @FindBy(className = "toast-message")
+    WebElement toast;
+
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -48,7 +52,15 @@ public class LoginPage {
         return welcome.getText();
     }
 
-   
+    public boolean verifyWelcomeText(String expectedText) {
+        String actualText = getText();
+        return actualText.contains(expectedText);
+    }
+    public boolean getToastMessage() {
+   	 System.out.println(toast.getText());
+   	 WaitUtility.waitForElementToBeVisible(driver, loginButton);
+   	    return toast.getText() != null;
+   	}
    
    
 }

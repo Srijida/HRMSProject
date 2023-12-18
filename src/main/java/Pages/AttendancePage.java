@@ -18,7 +18,7 @@ public class AttendancePage {
 	  WebElement timesheet;
 	  @FindBy (xpath="//a[@href='https://hrm.qabible.in/hrms/admin/timesheet/attendance']")
 	  WebElement attendance;
-	  @FindBy (xpath="//input[@placeholder='Select Date']")
+	  @FindBy (xpath="//input[@name='attendance_date']")
 	  WebElement date;	
 	  @FindBy (xpath="//button[@class='btn btn-primary save']")
 	  WebElement get;
@@ -36,8 +36,9 @@ public class AttendancePage {
 		  elementutility.clickOnElement(attendance);
 	  }
 	 public void strdate(String day, String month, String year) {
-		 elementutility.enterDate(date, day, month, year);
+		 elementutility.enterDate(date, day, month, year); 
 	 } 
+	
 	 public void clickget() {
 		  elementutility.clickOnElement(get);
 	  }

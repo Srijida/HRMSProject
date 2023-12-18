@@ -27,7 +27,8 @@ public class TicketPage {
 	  WebElement priority;
 	  @FindBy (xpath="(//button[@type='submit'])[1]")
 	  WebElement save;
-	  
+	  @FindBy(className = "toast-message")
+	    WebElement toast;
 	  
 	  public TicketPage(WebDriver driver) {
 	        this.driver = driver;
@@ -49,6 +50,7 @@ public class TicketPage {
 	        	elementutility.enterText(subject, name);;
 	        }
 	        public void stremp_ticket(String name) {
+	        	elementutility.mouseHoverAndClickonElement(employeeTicket);
 	        	elementutility.selectDrpdown(employeeTicket, name);
 	        }
 	        public void strpriority(String name) {
@@ -58,6 +60,10 @@ public class TicketPage {
 	        public void clicksave() {
 	        	elementutility.mouseHoverAndClickonElement(save);
 	        	elementutility.clickOnElement(save);
-	        }	  	  
+	        }
+	        public boolean getToastMessage() {
+	          	 System.out.println(toast.getText());
+	          	    return toast.getText() != null;
+	          	}
 
 }

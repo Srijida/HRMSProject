@@ -1,12 +1,15 @@
 package testcase;
 
+import java.io.IOException;
+
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import Constant.constant;
 import Pages.AttendancePage;
 import Pages.LoginPage;
 import utilities.ReadExcelData;
-@Listeners(generalTest.ListenerTestNG.class)
+@Listeners(listeners.ListenerTestNG.class)
 public class AttendanceTest extends BaseTest{
 	LoginPage objLogin;
 	AttendancePage objattend;
@@ -17,22 +20,19 @@ public class AttendanceTest extends BaseTest{
 	        objLogin.clickLogin();
 	        System.out.println("login successful");
 	    }
-
-	    @Test(dataProviderClass = ReadExcelData.class, dataProvider = "testdata")
-	    public void LoginTest(String username, String password) throws InterruptedException {
-	        performLogin(username, password);
-	    }
-	    @Test(dataProviderClass = ReadExcelData.class, dataProvider = "testdata", dependsOnMethods = "LoginTest")
-	    public void Attendance(String username,String password,String date) throws InterruptedException {
+	    @Test(priority=1)
+	    public void Attendance() throws InterruptedException, IOException {
+	    	ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "Attendance");
+	           String username = excelData.getCellData(1, 0);
+	           String password = excelData.getCellData(1,1);
+	           String day = excelData.getCellData(1, 2);
+	           String month = excelData.getCellData(1, 3);   
+	           String year = excelData.getCellData(1, 4);   
 	    	performLogin(username, password);
 	    	objattend=new AttendancePage(driver);
 	    	objattend.clicktimesheet();
-	    	objattend.clickattendance();
-	    	String[] parts = date.split("/");
-	        String day = parts[0];
-	        String month = parts[1];
-	        String year = parts[2]; 
-	        objattend.strdate(day, month, year);
+	    	objattend.clickattendance();	    	
+	        objattend.strdate(day,month,year);
 	        objattend.clickget();
 	        objattend.clicksearch();
 	    }

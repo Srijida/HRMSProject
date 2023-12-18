@@ -1,7 +1,5 @@
 package Pages;
 
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,12 +20,15 @@ public class OrganisationPage {
 	  WebElement name;
 	  @FindBy (xpath="//select[@id='aj_company']")
 	  WebElement company;
-	  @FindBy (xpath="//span[@id='select2-location_id-oc-container' and text()='Chennai Branch']")
-	  List<WebElement> locatioId;
+	  @FindBy (xpath="//select[@name='location_id']")
+	  WebElement locatioId;
 	  @FindBy (xpath="//select[@id='select2-demo-6']")
 	  WebElement departmentHead;
 	  @FindBy (xpath="(//button[@name='hrsale_form'])[1]")
 	  WebElement save;
+	  @FindBy(className = "toast-message")
+	    WebElement response_message;
+
 	  public OrganisationPage(WebDriver driver) {
 	        this.driver = driver;
 	        this.elementutility = new ElementUtility(driver); 
@@ -49,15 +50,21 @@ public class OrganisationPage {
 	        }
 
 	    public void setloc(String name) {
-	        elementutility.dropDownWithoutSelect(locatioId, name);
+	    	elementutility.mouseHoverAndClickonElement(locatioId);
+	        elementutility.selectDrpdown(locatioId, name);;
 	        }
 	    public void setdeptHead(String name) {
+	    	elementutility.mouseHoverAndClickonElement(departmentHead);
 	        elementutility.selectDrpdown(departmentHead, name);
 	        }
 	    public void clicksave() {
         	elementutility.mouseHoverAndClickonElement(save);
         	elementutility.clickOnElement(save);
         }
+	    public boolean getToastMessage() {
+	    	 System.out.println(response_message.getText());
+	    	    return response_message.getText() != null;
+	    	}
 
 	    }  
 	    

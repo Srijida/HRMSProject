@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 
 import Pages.EventsPage;
 import Pages.LoginPage;
-import generalTest.RetryAnalyzer;
+import retry_analyzer.RetryAnalyzer;
 import utilities.ReadExcelData;
-@Listeners(generalTest.ListenerTestNG.class)
+@Listeners(listeners.ListenerTestNG.class)
 public class EventsTest extends BaseTest {
 	LoginPage objLogin;
 	EventsPage objevents;

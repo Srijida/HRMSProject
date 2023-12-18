@@ -21,7 +21,8 @@ public class TrainingPage {
 	
 	  @FindBy (xpath="(//button[@type='submit'])[1]")
 	  WebElement save;	
-	  
+	  @FindBy(className = "toast-message")
+	    WebElement toast;
 	  public TrainingPage(WebDriver driver) {
 	        this.driver = driver;
 	        this.elementutility = new ElementUtility(driver); 
@@ -43,5 +44,9 @@ public class TrainingPage {
 	        	elementutility.mouseHoverAndClickonElement(save);
 	        	elementutility.clickOnElement(save);
 	        }
-	        
+	        public boolean getToastMessage() {
+	          	 System.out.println(toast.getText());
+	          	    return toast.getText() != null;
+	          	}
+	          
 }

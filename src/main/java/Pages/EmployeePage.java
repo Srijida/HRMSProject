@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ElementUtility;
 import utilities.WaitUtility;
-
 public class EmployeePage {
     WebDriver driver;
     ElementUtility elementutility;
@@ -40,7 +39,7 @@ public class EmployeePage {
     WebElement gender; 
     @FindBy(xpath="//select[@name='office_shift_id']")
     WebElement officeshift;   
-    @FindBy(xpath="//input[@name='date_of_birth']")
+    @FindBy(xpath="//input[@class='form-control date_of_birth hasDatepicker']")
     WebElement dateOfBirth;
     @FindBy(xpath="//input[@name='contact_no']")
     WebElement contactNum; 
@@ -56,7 +55,8 @@ public class EmployeePage {
     WebElement address;   
     @FindBy(xpath = "(//button[@class='btn btn-primary'])[2]")
     WebElement save;
-  
+    @FindBy(className = "toast-message")
+    WebElement toast;
 
     public EmployeePage(WebDriver driver) {
         this.driver = driver;
@@ -70,22 +70,29 @@ public class EmployeePage {
     }
 
     public void clickaddNewEmployee() {
+    	elementutility.mouseHoverAndClickonElement(addNewEmployee);
        elementutility.clickOnElement(addNewEmployee);
+       
+       WaitUtility.waitForElementToBeClickable(driver, addNewEmployee);
     }
 
     public void setFirstName(String strfname) {
       elementutility.enterText(firstname, strfname);
+      WaitUtility.waitForElementToBeVisible(driver, firstname);
     }
 
     public void setLastNAme(String strlname) {
        elementutility.enterText(lastname, strlname);
+       WaitUtility.waitForElementToBeVisible(driver, lastname);
     }
     public void setEmployeeID(String strempID) {
-       elementutility.enterText(employeeID, strempID);
+    	 elementutility.enterText(employeeID, strempID);
+       WaitUtility.waitForElementToBeVisible(driver, employeeID);
     }
 
-    public void setDate(String day, String month, String year) {
-       elementutility.enterDate(dateOfJoining, day, month, year);
+    public void selectDateOfJoining(String day, String month, String year) {
+    	elementutility.enterDate(dateOfJoining, day, month, year);
+    	
     }
     public void setCompanyName(String name) {
      elementutility.selectDrpdown(company, name);
@@ -119,8 +126,9 @@ public class EmployeePage {
      public void setofficeshift(String name){
     	       	elementutility.selectDrpdown(officeshift, name);
     	       }
-     public void setDOB(String day, String month, String year) {
-       elementutility.enterDate(dateOfBirth, day, month, year);
+     public void selectDOB(String day, String month, String year) {
+    	 elementutility.enterDate(dateOfBirth, day, month, year);
+     	
      }
      public void setcontact(String num){
     	 elementutility.enterText(contactNum, num);    	 
@@ -143,6 +151,12 @@ public class EmployeePage {
      public void clicksave() {
          elementutility.clickOnElement(save);
      }
+     public boolean getToastMessage() {
+    	 System.out.println(toast.getText());
+    	    return toast.getText() != null;
+    	}
+
+    
 }
        
     	    

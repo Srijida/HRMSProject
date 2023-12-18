@@ -170,20 +170,38 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 //    			            }
 //    			        }
 //    			    }
-    			    public void enterDate(WebElement element,String day, String month, String year) {
-    			    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    			        element.click();      
-    			        System.out.println(day+"-"+ month+"-"+ year);
-    			        List<WebElement> allDates = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-    			                By.xpath("//table[@class='ui-datepicker-calendar']//tbody//td")));
-    			        
-    			        for (WebElement date : allDates) {
-    			            if (date.getText().equals(day)) {
-    			                wait.until(ExpectedConditions.elementToBeClickable(date)).click();
-    			                break;
-    			            }
-    			        }
-    			    }
+    			    public void enterDate(WebElement dateField, String day, String month, String year) {
+    			    	  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    			    	  // Click the date field to open the calendar
+    			    	  dateField.click();
+
+    			    	  // Wait for the calendar to be visible
+    			    	  wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ui-datepicker-calendar")));
+
+    			    	  // Select the desired month and year (if needed)
+    			    	  String currentMonth = driver.findElement(By.xpath("//select[@class='ui-datepicker-month']")).getText();
+    			    	  String currentYear = driver.findElement(By.xpath("//select[@class='ui-datepicker-year']")).getText();
+    			    	  if (!currentMonth.equals(month) || !currentYear.equals(year)) {
+    			    	    WebElement monthSelect = driver.findElement(By.xpath("//select[@class='ui-datepicker-month']"));
+    			    	    WebElement yearSelect = driver.findElement(By.xpath("//select[@class='ui-datepicker-year']"));
+    			    	    Select monthDropdown = new Select(monthSelect);
+    			    	    Select yearDropdown = new Select(yearSelect);
+    			    	    monthDropdown.selectByVisibleText(month);
+    			    	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", yearSelect.findElement(By.xpath("//option[text()='" + year + "']")));
+    			            yearDropdown.selectByVisibleText(year);
+    			    	  }
+
+    			    	  // Find and click the desired day
+    			    	  List<WebElement> allDates = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//table[@class='ui-datepicker-calendar']//tbody//td")));
+    			    	  for (WebElement date : allDates) {
+    			    	    if (date.getText().equals(day)) {
+    			    	      wait.until(ExpectedConditions.elementToBeClickable(date)).click();
+    			    	      break;
+    			    	    }
+    			    	  }
+    			    	  System.out.println(day+"/"+month+"/"+year);
+    			    	}
 
     			    public void mouseHoverAndClickonElement(WebElement element){
     			        Actions action=new Actions(driver);
@@ -225,7 +243,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
     			            return false;
     			        }
     			    }
-
+    			   
 					
     		
     }

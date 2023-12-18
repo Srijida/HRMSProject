@@ -12,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import Constant.constant;
 import utilities.ElementUtility;
 import utilities.WaitUtility;
 
@@ -66,6 +67,8 @@ public class AssetPage {
 	 @FindBy (xpath="(//button[@type='submit'])[1]")
 	  WebElement submit;
 	 
+	 @FindBy(className = "toast-message")
+	    WebElement toast;
 	  public AssetPage(WebDriver driver) {
 	        this.driver = driver;
 	        this.elementutility = new ElementUtility(driver); 
@@ -131,16 +134,19 @@ public class AssetPage {
 		  elementutility.enterText(serialnum, name);
 	  }
 	  public void setwarranty(String day, String month, String year) {
-		  WaitUtility.waitForElementToBeClickable(driver, warranty);
 	       elementutility.enterDate(warranty, day, month, year);
 	     }
 	  public void clickfileUpload() throws AWTException, InterruptedException{
     	  elementutility.mouseHoverAndClickonElement(assetimage);
-        	elementutility.FileUploadUsingRobotClass(driver, "C:\\Users\\USER\\OneDrive\\Desktop\\MyProject\\file.jpg");
+        	elementutility.FileUploadUsingRobotClass(driver, constant.Fileupload_path);
         }
        public void clicksave() {
 		  elementutility.clickOnElement(submit);
 	  }
-
+       
+       public boolean getToastMessage() {
+      	 System.out.println(toast.getText());
+      	    return toast.getText() != null;
+      	}
 
 }

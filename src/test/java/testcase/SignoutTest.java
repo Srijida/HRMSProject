@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import Pages.LoginPage;
 import Pages.SignoutPage;
 import utilities.ReadExcelData;
-@Listeners(generalTest.ListenerTestNG.class)
+@Listeners(listeners.ListenerTestNG.class)
 public class SignoutTest extends BaseTest {
 	LoginPage objLogin;
 	SignoutPage objempexist;

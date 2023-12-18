@@ -1,35 +1,46 @@
 package testcase;
 
+import java.io.IOException;
+
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import Constant.constant;
 import Pages.LoginPage;
 import Pages.StaffPage;
+import Pages.TicketPage;
 import utilities.ReadExcelData;
-@Listeners(generalTest.ListenerTestNG.class)
+@Listeners(listeners.ListenerTestNG.class)
 public class StaffTest extends BaseTest {
 	
 	  LoginPage objLogin;
 	  StaffPage objstaff;
-
-	    @Test(dataProviderClass = ReadExcelData.class, dataProvider = "testdata")
-	    public void LoginTest(String username, String password) throws InterruptedException {
+	  private void performLogin(String username, String password) {
 	        objLogin = new LoginPage(driver);
-	        objstaff = new StaffPage(driver);
-
 	        objLogin.setUsername(username);
 	        objLogin.setPassword(password);
 	        objLogin.clickLogin();
-	        System.out.println("login successful");
+	   }
+	  @Test(priority=2)
+	    public void tickets_test() throws InterruptedException, IOException {
+	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Tickets");
+	        String username = excelData.getCellData(1, 0);
+	        String password = excelData.getCellData(1,1);
+	        String rolename = excelData.getCellData(1,2);
+	        String access = excelData.getCellData(1,3);
+	        performLogin(username, password);
+	        objstaff=new StaffPage(driver);
 	        objstaff.clickstaff();
 	        objstaff.clickrolprivi();
 	        objstaff.clickadd();
-	        objstaff.strrolname("Test1");
-	        objstaff.straccess("All Menu Access");
+	        objstaff.strrolname(rolename);
+	        objstaff.straccess(access);
 	        objstaff.clicksave();
 	        objstaff.clicksearch("dev");
-	        Thread.sleep(3000);
-	      
-	       
-	    }
+	        Assert.assertTrue(objstaff.getToastMessage());	        
+	
+}
+	
+	    
 }

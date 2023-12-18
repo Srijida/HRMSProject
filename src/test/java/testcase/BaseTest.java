@@ -31,7 +31,6 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"browser", "url"})
     public void setUp(String browser, String url) throws IOException {
-        System.out.println("The Path is " + System.getProperty("user.dir"));
         FileReader fr = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\configfiles\\config.properties");
         prop.load(fr);
         fr.close();
