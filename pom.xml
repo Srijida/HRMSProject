@@ -3,6 +3,10 @@
   <groupId>Selenium</groupId>
   <artifactId>HRMSProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+	  <maven.compiler.source>1.8</maven.compiler.source>
+ <maven.compiler.target>1.8</maven.compiler.target>
+ </properties>
 	<dependencies>
 		
 		<!--
@@ -42,7 +46,8 @@
     <groupId>com.github.javafaker</groupId>
     <artifactId>javafaker</artifactId>
     <version>1.0.2</version>
-</dependency>	
+</dependency>
+	
 	
 	</dependencies>
 
