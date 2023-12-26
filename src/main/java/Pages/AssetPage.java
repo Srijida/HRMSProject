@@ -124,14 +124,14 @@ public class AssetPage {
 
 	public void stremployee(String value) {
 		elementutility.mouseHoverAndClickonElement(employeeId);
-		waitutil.waitForElementToBeVisible(driver, employeeId);
+		WaitUtility.waitForElementToBeVisible(driver, employeeId);
 		elementutility.selectDrpdown(employeeId, value);
 	}
 
 	public void setpurDate(String day, String month, String year) {
 
 		elementutility.enterDate(purchasedate, day, month, year);
-		waitutil.waitForElementToBeClickable(driver, purchasedate);
+		WaitUtility.waitForElementToBeClickable(driver, purchasedate);
 
 	}
 
@@ -167,15 +167,15 @@ public class AssetPage {
 	}
 	 public boolean isSaveSuccessMessageDisplayed() {
 	        
-    	 String toastText = response.getText();
+    	 String Text = response.getText();
     	    String successMessage =constant.SuccessMessage; 
-    	    return toastText.contains(successMessage);
+    	    return Text.contains(successMessage);
      }
 
      public boolean isFailureMessageDisplayed() {
-    	 String toastText = response.getText();
+    	 String Text = response.getText();
  	    String failureMessage = constant.FailureMessage; 
- 	    return toastText.contains(failureMessage);
+ 	    return Text.contains(failureMessage);
      }
      
 

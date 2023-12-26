@@ -27,7 +27,7 @@ public class OrganisationTests extends BaseTest {
         objorg.clickorg();
         objorg.clickdept();
         objorg.clicksave();
-        Assert.assertTrue(objorg.getToastMessage());
+        Assert.assertTrue(objorg.getResponseMessage());
     }
     @Test(priority=2)
     public void OrganisationTest_only_name() throws InterruptedException, IOException {
@@ -41,7 +41,7 @@ public class OrganisationTests extends BaseTest {
         objorg.clickdept();
         objorg.setName(excelData.getCellData(1, 2)); 
         objorg.clicksave();
-        Assert.assertTrue(objorg.getToastMessage());
+        Assert.assertTrue(objorg.getResponseMessage());
     }
 
     @Test(priority=3)
@@ -59,6 +59,6 @@ public class OrganisationTests extends BaseTest {
         objorg.setloc(excelData.getCellData(1, 4));
         objorg.setdeptHead(excelData.getCellData(1, 5));    
         objorg.clicksave();
-        Assert.assertTrue(objorg.getToastMessage());
+        Assert.assertTrue(objorg.getResponseMessage());
     }
 }

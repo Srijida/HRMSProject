@@ -57,15 +57,15 @@ public FileManagerPage(WebDriver driver) {
 }
       public boolean isSaveSuccessMessageDisplayed() {
           
-     	 String toastText = response.getText();
+     	 String Text = response.getText();
      	    String successMessage =constant.SuccessMessageFile; 
-     	    return toastText.contains(successMessage);
+     	    return Text.contains(successMessage);
       }
 
       public boolean isFailureMessageDisplayed() {
-     	 String toastText = response.getText();
+     	 String Text = response.getText();
   	    String failureMessage = constant.FailureMessage; 
-  	    return toastText.contains(failureMessage);
+  	    return Text.contains(failureMessage);
       }
       
 

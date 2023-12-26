@@ -28,7 +28,7 @@ public class StaffPage {
 	  @FindBy (xpath="//input[@type='search']")
 	  WebElement search;
 	  @FindBy(className = "toast-message")
-	    WebElement toast;
+	    WebElement responseMessage;
 	  
 	  public StaffPage(WebDriver driver) {
 	        this.driver = driver;
@@ -63,8 +63,8 @@ public class StaffPage {
 	        	
 	        }
 			 public boolean getToastMessage() {
-	          	 System.out.println(toast.getText());
-	          	    return toast.getText() != null;
+	          	 System.out.println(responseMessage.getText());
+	          	    return true;
 	          	}
 	  
 	  

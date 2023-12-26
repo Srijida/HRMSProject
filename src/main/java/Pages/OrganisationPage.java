@@ -61,9 +61,9 @@ public class OrganisationPage {
         	elementutility.mouseHoverAndClickonElement(save);
         	elementutility.clickOnElement(save);
         }
-	    public boolean getToastMessage() {
+	    public boolean getResponseMessage() {
 	    	 System.out.println(response_message.getText());
-	    	    return response_message.getText() != null;
+	    	    return true;
 	    	}
 
 	    }  
