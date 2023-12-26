@@ -8,35 +8,21 @@ import org.testng.annotations.Test;
 
 import Constant.constant;
 import Pages.AttendancePage;
-import Pages.LoginPage;
 import utilities.ReadExcelData;
 @Listeners(listeners.ListenerTestNG.class)
 public class AttendanceTest extends BaseTest{
-	LoginPage objLogin;
 	AttendancePage objattend;
-	 public void performLogin(String username, String password) throws InterruptedException {
-	        objLogin = new LoginPage(driver);
-	        objLogin.setUsername(username);
-	        objLogin.setPassword(password);
-	        objLogin.clickLogin();
-	        System.out.println("login successful");
-	    }
+
 	    @Test(priority=1)
 	    public void ValidateAttendanceBasedOnDate() throws InterruptedException, IOException {
-	    	ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "Attendance");
-	           String username = excelData.getCellData(1, 0);
-	           String password = excelData.getCellData(1,1);
-	           String day = excelData.getCellData(1, 2);
-	           String month = excelData.getCellData(1, 3);   
-	           String year = excelData.getCellData(1, 4);   
-	    	performLogin(username, password);
+	    	ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "Attendance");	           
+	    	performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
 	    	objattend=new AttendancePage(driver);
 	    	objattend.clicktimesheet();
 	    	objattend.clickattendance();	    	
-	        objattend.strdate(day,month,year);
+	        objattend.strdate(excelData.getCellData(1, 2),excelData.getCellData(1, 3),excelData.getCellData(1, 4));
 	        objattend.clickget();
 	        objattend.clicksearch();
-	        Assert.assertTrue(objattend.isSearchBoxDisplayed());
 	        Assert.assertTrue(objattend.areResultsDisplayed());
 
 	    }

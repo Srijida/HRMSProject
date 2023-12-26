@@ -18,28 +18,21 @@ public class LoginTests extends BaseTest {
     public void Valid_LoginTest() throws InterruptedException, IOException {
        
         ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "LoginTest");
-        String username = excelData.getCellData(1, 0);
-        String password = excelData.getCellData(1, 1);
-        String value =excelData.getCellData(1, 2);
-
         objLogin = new LoginPage(driver);
-        objLogin.setUsername(username);
-        objLogin.setPassword(password);
+        objLogin.setUsername(excelData.getCellData(1, 0));
+        objLogin.setPassword(excelData.getCellData(1, 1));
         objLogin.clickLogin();
         Assert.assertTrue(objLogin.ResponseMessage());
-        Assert.assertTrue(objLogin.verifyWelcomeText(value));
+        Assert.assertTrue(objLogin.verifyWelcomeText(excelData.getCellData(1, 2)));
       
     }
     @Test(priority=2)
     public void Invalid_Username_Test() throws InterruptedException, IOException {
        
         ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "LoginTest");
-        String username = excelData.getCellData(2, 0);
-        String password = excelData.getCellData(2, 1);
-
         objLogin = new LoginPage(driver);
-        objLogin.setUsername(username);
-        objLogin.setPassword(password);
+        objLogin.setUsername( excelData.getCellData(2, 0));
+        objLogin.setPassword( excelData.getCellData(2, 1));
         objLogin.clickLogin();
         Assert.assertTrue(objLogin.ResponseMessage());
       
@@ -49,12 +42,9 @@ public class LoginTests extends BaseTest {
     public void Invalid_Password_Test() throws InterruptedException, IOException {
        
         ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "LoginTest");
-        String username = excelData.getCellData(3, 0);
-        String password = excelData.getCellData(3, 1);
-
         objLogin = new LoginPage(driver);
-        objLogin.setUsername(username);
-        objLogin.setPassword(password);
+        objLogin.setUsername( excelData.getCellData(3, 0));
+        objLogin.setPassword( excelData.getCellData(3, 1));
         objLogin.clickLogin();
         Assert.assertTrue(objLogin.ResponseMessage());
       
@@ -64,13 +54,9 @@ public class LoginTests extends BaseTest {
     public void Invalid_LoginTest() throws InterruptedException, IOException {
        
         ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "LoginTest");
-        String username = excelData.getCellData(4, 0);
-        String password = excelData.getCellData(4, 1);
-
-
         objLogin = new LoginPage(driver);
-        objLogin.setUsername(username);
-        objLogin.setPassword(password);
+        objLogin.setUsername( excelData.getCellData(4, 0));
+        objLogin.setPassword( excelData.getCellData(4, 1));
         objLogin.clickLogin();
         Assert.assertTrue(objLogin.ResponseMessage());
       

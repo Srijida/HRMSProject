@@ -8,13 +8,13 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://hrm.qabible.in/hrms/admin"/>
     <classes>
-      <class name="testcase.EmployeeDataTest">
+      <class name="testcase.LoginTests">
         <methods>
           <include name="takeScreenshotOnFailure"/>
           <include name="setUp"/>
-          <include name="EmployeeDetails" invocation-numbers="1 2"/>
+          <include name="Invalid_Username_Test"/>
         </methods>
-      </class> <!-- testcase.EmployeeDataTest -->
+      </class> <!-- testcase.LoginTests -->
     </classes>
   </test> <!-- Test_Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

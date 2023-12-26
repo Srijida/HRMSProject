@@ -17,14 +17,10 @@ public class FileManagerTest extends BaseTest  {
 	FileManagerPage objfile;
 
 @Test()
-public void FileUploadTest() throws IOException, AWTException, InterruptedException{
+public void SavingDataByUploadingFile() throws IOException, AWTException, InterruptedException{
 	 ReadExcelData excelData = new ReadExcelData (constant.EXCEL_FILE_PATH, "FileUpload");
-    objLogin = new LoginPage(driver);
+	 performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
     objfile = new FileManagerPage(driver);
-
-    objLogin.setUsername(excelData.getCellData(1, 0));
-    objLogin.setPassword(excelData.getCellData(1,1));
-    objLogin.clickLogin();
     objfile.clickfileManager();
     objfile.strdept(excelData.getCellData(1, 2));    
     objfile.clickfileUpload();

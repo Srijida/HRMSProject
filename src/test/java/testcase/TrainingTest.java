@@ -16,13 +16,9 @@ public class TrainingTest extends BaseTest {
 	TrainingPage objtaining;
 	 
 	  @Test(priority=1)
-	    public void traning_test_nodata() throws InterruptedException, IOException {
-	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Training");
-	       
-	        objLogin = new LoginPage(driver);
-	         objLogin.setUsername(excelData.getCellData(1, 0));
-	         objLogin.setPassword(excelData.getCellData(1,1));
-	         objLogin.clickLogin();
+	    public void savingTheTrainingTypeWithoutPassingAnyDataInTheFeilds() throws InterruptedException, IOException {
+	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Training");	       
+	        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
 	        objtaining=new TrainingPage(driver);
 	        objtaining.clicktraining();
 	        objtaining.clicktrainingType();    
@@ -32,12 +28,9 @@ public class TrainingTest extends BaseTest {
 }
 
 	 @Test(priority=2)
-	    public void traning_test() throws InterruptedException, IOException {
+	    public void savingTrainingTestDtailsByPassingAllTheDatas() throws InterruptedException, IOException {
 	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Training");
-	        objLogin = new LoginPage(driver);
-	         objLogin.setUsername(excelData.getCellData(1, 0));
-	         objLogin.setPassword(excelData.getCellData(1,1));
-	         objLogin.clickLogin();
+	        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
 	        objtaining=new TrainingPage(driver);
 	        objtaining.clicktraining();
 	        objtaining.clicktrainingType();

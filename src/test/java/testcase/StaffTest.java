@@ -17,13 +17,10 @@ public class StaffTest extends BaseTest {
 	  StaffPage objstaff;
 	 
 	  @Test(priority=1)
-	    public void tickets_test() throws InterruptedException, IOException {
+	    public void savingRolesAndPrivilagesOfStaff() throws InterruptedException, IOException {
 	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Staff");
 	       
-	        objLogin = new LoginPage(driver);
-	        objLogin.setUsername(excelData.getCellData(1, 0));
-	        objLogin.setPassword(excelData.getCellData(1,1));
-	        objLogin.clickLogin();
+	        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
 	        objstaff=new StaffPage(driver);
 	        objstaff.clickstaff();
 	        objstaff.clickrolprivi();

@@ -78,6 +78,12 @@ public class BaseTest {
 		    return destination;
     	      	}
     
-   
+   public void performLogin(String username, String password) throws InterruptedException {
+       objLogin = new LoginPage(driver);
+       objLogin.setUsername(username);
+       objLogin.setPassword(password);
+       objLogin.clickLogin();
+
+   }
 
 }

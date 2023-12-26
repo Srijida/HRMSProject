@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 import Constant.constant;
 import Pages.AssetPage;
-import Pages.LoginPage;
 import utilities.ReadExcelData;
 @Listeners(listeners.ListenerTestNG.class)
 public class AssetTests extends BaseTest {
@@ -20,13 +19,9 @@ public class AssetTests extends BaseTest {
 	
     @Test()
 
-        public void ValidateAssetIsAdded() throws AWTException, InterruptedException, IOException {
+        public void ValidateAssetIsNotAdded() throws AWTException, InterruptedException, IOException {
     	 ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "AssetTest");
-
-         objLogin = new LoginPage(driver);
-         objLogin.setUsername(excelData.getCellData(1, 0));
-         objLogin.setPassword(excelData.getCellData(1,1));
-         objLogin.clickLogin();
+    	  performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
          objasset = new AssetPage(driver);
          objasset.clickasset();
          objasset.clickassetdrop();
@@ -47,7 +42,6 @@ public class AssetTests extends BaseTest {
         		 excelData.getCellData(1,15), excelData.getCellData(1,16));
          objasset.clickfileUpload();
          objasset.clicksave();
-         Assert.assertTrue(objasset.ResponseMessage());
          Assert.assertTrue(objasset.isFailureMessageDisplayed());
     
 

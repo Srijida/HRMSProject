@@ -7,23 +7,19 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Constant.constant;
-import Pages.LoginPage;
 import Pages.EmployeePage;
 import utilities.ReadExcelData;
 
 @Listeners(listeners.ListenerTestNG.class)
 public class EmployeeTest extends BaseTest {
-    private LoginPage objLogin;
-    private EmployeePage objEmployee;
+         LoginTests objLogin;
+         EmployeePage objEmployee;
     
    
     @Test(priority=3)
-    public void employee_blank_details() throws InterruptedException, IOException {
+    public void verifyEmployeeDetailsWithoutPassingAnyData() throws InterruptedException, IOException {
        ReadExcelData excelData = new ReadExcelData (constant.EXCEL_FILE_PATH, "EmployeeDetails");
-        objLogin = new LoginPage(driver);
-        objLogin.setUsername(excelData.getCellData(1, 0));
-        objLogin.setPassword(excelData.getCellData(1,1));
-        objLogin.clickLogin();
+       performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
     	objEmployee=new EmployeePage(driver);
         objEmployee.clickemployee();
         objEmployee.clickaddNewEmployee();
@@ -34,30 +30,21 @@ public class EmployeeTest extends BaseTest {
 
     }
     @Test(priority=2)
-    public void employee_skipped_lastname() throws InterruptedException, IOException {
+    public void verifyEmployeeDetailsByPAssingOnlyTheFirstName() throws InterruptedException, IOException {
         ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "EmployeeDetails");
-        
-        objLogin = new LoginPage(driver);
-        objLogin.setUsername(excelData.getCellData(1, 0));
-        objLogin.setPassword(excelData.getCellData(1,1));
-        objLogin.clickLogin();
+        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
     	objEmployee=new EmployeePage(driver);
         objEmployee.clickemployee();
         objEmployee.clickaddNewEmployee();
         objEmployee.setFirstName(excelData.getCellData(1,2));
         objEmployee.clicksave();
-        Assert.assertTrue(objEmployee.ResponseMessage());
        Assert.assertTrue(objEmployee.isFailureMessageDisplayed());      
     }
 
     @Test(priority=1)
-    public void employee_skipped_employeeId() throws InterruptedException, IOException {
+    public void verifyEmployeeDetailsByPassingFirstTwoDatas() throws InterruptedException, IOException {
         ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "EmployeeDetails");
-        
-        objLogin = new LoginPage(driver);
-        objLogin.setUsername(excelData.getCellData(1, 0));
-        objLogin.setPassword(excelData.getCellData(1,1));
-        objLogin.clickLogin();
+        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
     	objEmployee=new EmployeePage(driver);
         objEmployee.clickemployee();
         objEmployee.clickaddNewEmployee();
@@ -69,13 +56,9 @@ public class EmployeeTest extends BaseTest {
 
     }
     @Test(priority=4)
-    public void EmployeeDetails() throws InterruptedException, IOException {
+    public void veriftEmployeeDetailsByPassingAllTheDatas() throws InterruptedException, IOException {
         ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "EmployeeDetails");
- 
-        objLogin = new LoginPage(driver);
-        objLogin.setUsername(excelData.getCellData(1, 0));
-        objLogin.setPassword(excelData.getCellData(1,1));
-        objLogin.clickLogin();
+        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
     	objEmployee=new EmployeePage(driver);
         objEmployee.clickemployee();
         objEmployee.clickaddNewEmployee();

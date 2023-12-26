@@ -16,12 +16,9 @@ public class TicketsTest extends BaseTest{
 	TicketPage objticket;
 	
  @Test(priority=1)
-	    public void tickets_test_incomplete_data() throws InterruptedException, IOException {
+	    public void issuingTicketsToStaff() throws InterruptedException, IOException {
 	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Tickets");
-	        objLogin = new LoginPage(driver);
-	        objLogin.setUsername(excelData.getCellData(1, 0));
-	        objLogin.setPassword(excelData.getCellData(1,1));
-	        objLogin.clickLogin();
+	        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
 	        objticket=new TicketPage(driver);
 	        objticket.clicktickets();
 	        objticket.clickadd();
@@ -37,10 +34,7 @@ public class TicketsTest extends BaseTest{
 	 @Test(priority=2)
 	    public void tickets_test() throws InterruptedException, IOException {
 	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Tickets");
-	        objLogin = new LoginPage(driver);
-	        objLogin.setUsername(excelData.getCellData(1, 0));
-	        objLogin.setPassword(excelData.getCellData(1,1));
-	        objLogin.clickLogin();
+	        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
 	        objticket=new TicketPage(driver);
 	        objticket.clicktickets();
 	        objticket.clickadd();

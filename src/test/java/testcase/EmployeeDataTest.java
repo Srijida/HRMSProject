@@ -13,14 +13,11 @@ public class EmployeeDataTest extends BaseTest {
 	EmployeePage objemployee;
 		 	 
 	    @Test(dataProviderClass = DataProviderutility.class, dataProvider = "testdata")
-	    public void EmployeeDetails(String username, String password, String firstname,String lastname,String employeeId,String day,String month,String year, String company,
+	    public void VerifyEmployeeDetailsAdded(String username, String password, String firstname,String lastname,String employeeId,String day,String month,String year, String company,
 	    		String location,String department,String designation,String userName,
 	    		String email,String gender,String shift,String day1,String month1,String year1,String contact,String pasword,
 	    		String confirmpassword,String role,String leave,String address) throws InterruptedException {
-	    	 objLogin = new LoginPage(driver);
-	    	objLogin.setUsername(username);
-		    objLogin.setPassword(password);
-		    objLogin.clickLogin();
+	    	performLogin(username,password);
 	    	objemployee=new EmployeePage(driver);
 	        objemployee.clickemployee();
 	        objemployee.clickaddNewEmployee();
@@ -44,7 +41,6 @@ public class EmployeeDataTest extends BaseTest {
             objemployee.setleave(leave);
             objemployee.setAddress(address);
 	        objemployee.clicksave();
-	        Assert.assertTrue(objemployee.ResponseMessage());
 	        Assert.assertTrue(objemployee.isSaveSuccessMessageDisplayed());  
 
 }

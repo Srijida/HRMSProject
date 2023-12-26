@@ -3,6 +3,7 @@ package testcase;
 import java.awt.AWTException;
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -19,13 +20,11 @@ public class SignoutTest extends BaseTest {
 	 @Test()
 	    public void Signout() throws InterruptedException, AWTException, IOException {
 		 ReadExcelData excelData = new ReadExcelData (constant.EXCEL_FILE_PATH, "Logout");
-	        objLogin = new LoginPage(driver);
-	        objLogin.setUsername(excelData.getCellData(1, 0));
-	        objLogin.setPassword(excelData.getCellData(1, 1));
-	        objLogin.clickLogin();
+	        performLogin(excelData.getCellData(1,0),excelData.getCellData(1,1));
 	        objempexist = new SignoutPage(driver);
 	        objempexist.clickempi_img();
 	        objempexist.clicKsign_out();
+	        Assert.assertTrue(objempexist.logocheck());
 	        
 
 }
