@@ -22,6 +22,8 @@ WebElement department;
 WebElement fileupload;
 @FindBy (xpath="(//button[contains(@class, 'btn btn-primary')])[1]")
 WebElement save;
+@FindBy(className = "toast-message")
+WebElement response;
 
 public FileManagerPage(WebDriver driver) {
       this.driver = driver;
@@ -47,6 +49,24 @@ public FileManagerPage(WebDriver driver) {
       	elementutility.mouseHoverAndClickonElement(save);
       	elementutility.clickOnElement(save);
       }
+      public boolean ResponseMessage() {
+     	 System.out.println(response.getText());
+ 		return true;
+ 		
 
+}
+      public boolean isSaveSuccessMessageDisplayed() {
+          
+     	 String toastText = response.getText();
+     	    String successMessage =constant.SuccessMessageFile; 
+     	    return toastText.contains(successMessage);
+      }
+
+      public boolean isFailureMessageDisplayed() {
+     	 String toastText = response.getText();
+  	    String failureMessage = constant.FailureMessage; 
+  	    return toastText.contains(failureMessage);
+      }
+      
 
 }

@@ -1,10 +1,12 @@
 package testcase;
 
 import java.awt.AWTException;
+import java.io.IOException;
 
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import Constant.constant;
 import Pages.LoginPage;
 import Pages.SignoutPage;
 import utilities.ReadExcelData;
@@ -14,11 +16,12 @@ public class SignoutTest extends BaseTest {
 	SignoutPage objempexist;
 	
 
-	 @Test(dataProviderClass=ReadExcelData.class, dataProvider="testdata")
-	    public void LoginTest(String username, String password) throws InterruptedException, AWTException {
+	 @Test()
+	    public void Signout() throws InterruptedException, AWTException, IOException {
+		 ReadExcelData excelData = new ReadExcelData (constant.EXCEL_FILE_PATH, "Logout");
 	        objLogin = new LoginPage(driver);
-	        objLogin.setUsername(username);
-	        objLogin.setPassword(password);
+	        objLogin.setUsername(excelData.getCellData(1, 0));
+	        objLogin.setPassword(excelData.getCellData(1, 1));
 	        objLogin.clickLogin();
 	        objempexist = new SignoutPage(driver);
 	        objempexist.clickempi_img();

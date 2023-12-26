@@ -13,62 +13,43 @@ import Pages.LoginPage;
 import utilities.ReadExcelData;
 @Listeners(listeners.ListenerTestNG.class)
 public class AssetTests extends BaseTest {
-	LoginPage objLogin;
+
 	AssetPage objasset;
 	   
 //retryAnalyzer=RetryAnalyzer.class
-	public void performLogin(String username, String password) throws InterruptedException {
-        objLogin = new LoginPage(driver);
-        objLogin.setUsername(username);
-        objLogin.setPassword(password);
-        objLogin.clickLogin();
-        System.out.println("login successful");
-    }
-
+	
     @Test()
 
-        public void AssetTest() throws AWTException, InterruptedException, IOException {
+        public void ValidateAssetIsAdded() throws AWTException, InterruptedException, IOException {
     	 ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "AssetTest");
-         
-         String username = excelData.getCellData(1, 0);
-         String password = excelData.getCellData(1,1);
-         String catogory = excelData.getCellData(1, 2);
-         String name = excelData.getCellData(1,3);
-         String assetcode = excelData.getCellData(1,4);
-         String working = excelData.getCellData(1,5);
-         String companyID = excelData.getCellData(1, 6);
-         String employee = excelData.getCellData(1,7);
-         String day = excelData.getCellData(1,8);
-         String month = excelData.getCellData(1,9);
-         String year = excelData.getCellData(1,10);
-         String Invoice = excelData.getCellData(1,11);
-         String manufacture = excelData.getCellData(1, 12);
-         String Serielnum = excelData.getCellData(1,13);
-         String day1 = excelData.getCellData(1,14);
-         String month1 = excelData.getCellData(1,15);
-         String year1 = excelData.getCellData(1,16);
-         performLogin(username, password);
-        objasset=new AssetPage(driver);       
-        objasset.clickasset();
-        objasset.clickassetdrop();
-        objasset.AlertPresent();     
-        objasset.clickadd();;
-        objasset.strcatogory(catogory);
-        objasset.strassetname(name);
-        objasset.strassetcode(assetcode);
-        objasset.strworking(working);
-        objasset.strcomId(companyID);
-        objasset.stremployee(employee);
-        objasset.setpurDate(day, month, year);
-        objasset.strinvoice(Invoice);
-        objasset.strmanu(manufacture);
-        objasset.strserielnum(Serielnum);
-        objasset.setwarranty(day1, month1, year1);
-        objasset.clickfileUpload();
-        objasset.clicksave();
-        Assert.assertTrue(objasset.getToastMessage()); 
+
+         objLogin = new LoginPage(driver);
+         objLogin.setUsername(excelData.getCellData(1, 0));
+         objLogin.setPassword(excelData.getCellData(1,1));
+         objLogin.clickLogin();
+         objasset = new AssetPage(driver);
+         objasset.clickasset();
+         objasset.clickassetdrop();
+         objasset.AlertPresent();     
+         objasset.clickadd();
+         objasset.strcatogory(excelData.getCellData(1, 2));
+         objasset.strassetname(excelData.getCellData(1,3));
+         objasset.strassetcode(excelData.getCellData(1,4));
+         objasset.strworking(excelData.getCellData(1,5));
+         objasset.strcomId(excelData.getCellData(1, 6));
+         objasset.stremployee(excelData.getCellData(1,7));
+         objasset.setpurDate(excelData.getCellData(1,8), 
+        		 excelData.getCellData(1,9), excelData.getCellData(1,10));
+         objasset.strinvoice(excelData.getCellData(1,11));
+         objasset.strmanu(excelData.getCellData(1, 12));
+         objasset.strserielnum(excelData.getCellData(1,13));
+         objasset.setwarranty(excelData.getCellData(1,14), 
+        		 excelData.getCellData(1,15), excelData.getCellData(1,16));
+         objasset.clickfileUpload();
+         objasset.clicksave();
+         Assert.assertTrue(objasset.ResponseMessage());
+         Assert.assertTrue(objasset.isFailureMessageDisplayed());
     
-        
 
 }
 }

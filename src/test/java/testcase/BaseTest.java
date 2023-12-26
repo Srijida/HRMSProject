@@ -20,14 +20,14 @@ import org.testng.annotations.AfterMethod;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-
 import Constant.constant;
+import Pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
     public static WebDriver driver;
     public static Properties prop = new Properties();
-  
+    LoginPage objLogin;
     @BeforeMethod
     @Parameters({"browser", "url"})
     public void setUp(String browser, String url) throws IOException {
@@ -51,6 +51,7 @@ public class BaseTest {
 
         driver.get(url);
     }
+
 
     @AfterMethod(alwaysRun=true)
  
@@ -76,4 +77,7 @@ public class BaseTest {
     	   FileUtils.copyFile(source, finalDestination);
 		    return destination;
     	      	}
+    
+   
+
 }

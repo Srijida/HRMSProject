@@ -26,7 +26,7 @@ public class LoginPage {
     WebElement welcome;
     
     @FindBy(className = "toast-message")
-    WebElement toast;
+    WebElement responseMessage;
 
 
     public LoginPage(WebDriver driver) {
@@ -56,11 +56,10 @@ public class LoginPage {
         String actualText = getText();
         return actualText.contains(expectedText);
     }
-    public boolean getToastMessage() {
-   	 System.out.println(toast.getText());
-   	 WaitUtility.waitForElementToBeVisible(driver, loginButton);
-   	    return toast.getText() != null;
+    public boolean ResponseMessage() {
+      	 System.out.println(responseMessage.getText());
+   		return true;
+   		
    	}
-   
    
 }

@@ -4,12 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import Constant.constant;
 import utilities.ElementUtility;
 import utilities.WaitUtility;
 public class EmployeePage {
     WebDriver driver;
     ElementUtility elementutility;
-    WaitUtility wait;
+    WaitUtility waitutil;
     
     @FindBy(xpath = "(//a[@href='https://hrm.qabible.in/hrms/admin/employees'])[2]")
     WebElement employee;
@@ -56,7 +58,7 @@ public class EmployeePage {
     @FindBy(xpath = "(//button[@class='btn btn-primary'])[2]")
     WebElement save;
     @FindBy(className = "toast-message")
-    WebElement toast;
+    WebElement response;
 
     public EmployeePage(WebDriver driver) {
         this.driver = driver;
@@ -72,22 +74,23 @@ public class EmployeePage {
     public void clickaddNewEmployee() {
     	elementutility.mouseHoverAndClickonElement(addNewEmployee);
        elementutility.clickOnElement(addNewEmployee);
-       
        WaitUtility.waitForElementToBeClickable(driver, addNewEmployee);
+
     }
 
-    public void setFirstName(String strfname) {
-      elementutility.enterText(firstname, strfname);
-      WaitUtility.waitForElementToBeVisible(driver, firstname);
+    public void setFirstName(String strfname) {   	
+     elementutility.enterText(firstname, strfname);
+     WaitUtility.waitForElementToBeVisible(driver, firstname);
     }
 
     public void setLastNAme(String strlname) {
        elementutility.enterText(lastname, strlname);
        WaitUtility.waitForElementToBeVisible(driver, lastname);
+
     }
     public void setEmployeeID(String strempID) {
     	 elementutility.enterText(employeeID, strempID);
-       WaitUtility.waitForElementToBeVisible(driver, employeeID);
+    	
     }
 
     public void selectDateOfJoining(String day, String month, String year) {
@@ -151,10 +154,25 @@ public class EmployeePage {
      public void clicksave() {
          elementutility.clickOnElement(save);
      }
-     public boolean getToastMessage() {
-    	 System.out.println(toast.getText());
-    	    return toast.getText() != null;
+     public boolean ResponseMessage() {
+    	 System.out.println(response.getText());
+		return true;
+		
+    	   
     	}
+     public boolean isSaveSuccessMessageDisplayed() {
+        
+    	 String toastText = response.getText();
+    	    String successMessage =constant.SuccessMessage; 
+    	    return toastText.contains(successMessage);
+     }
+
+     public boolean isFailureMessageDisplayed() {
+    	 String toastText = response.getText();
+ 	    String failureMessage = constant.FailureMessage; 
+ 	    return toastText.contains(failureMessage);
+     }
+     
 
     
 }

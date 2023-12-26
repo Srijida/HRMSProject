@@ -2,6 +2,7 @@ package testcase;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -21,7 +22,7 @@ public class AttendanceTest extends BaseTest{
 	        System.out.println("login successful");
 	    }
 	    @Test(priority=1)
-	    public void Attendance() throws InterruptedException, IOException {
+	    public void ValidateAttendanceBasedOnDate() throws InterruptedException, IOException {
 	    	ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH, "Attendance");
 	           String username = excelData.getCellData(1, 0);
 	           String password = excelData.getCellData(1,1);
@@ -35,6 +36,10 @@ public class AttendanceTest extends BaseTest{
 	        objattend.strdate(day,month,year);
 	        objattend.clickget();
 	        objattend.clicksearch();
+	        Assert.assertTrue(objattend.isSearchBoxDisplayed());
+	        Assert.assertTrue(objattend.areResultsDisplayed());
+
 	    }
 
 }
+

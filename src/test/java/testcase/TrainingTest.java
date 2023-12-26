@@ -14,18 +14,15 @@ import utilities.ReadExcelData;
 public class TrainingTest extends BaseTest {
 	LoginPage objLogin;
 	TrainingPage objtaining;
-	  private void performLogin(String username, String password) {
-	        objLogin = new LoginPage(driver);
-	        objLogin.setUsername(username);
-	        objLogin.setPassword(password);
-	        objLogin.clickLogin();
-	   }
+	 
 	  @Test(priority=1)
 	    public void traning_test_nodata() throws InterruptedException, IOException {
 	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Training");
-	        String username = excelData.getCellData(1, 0);
-	        String password = excelData.getCellData(1,1);
-	        performLogin(username, password);
+	       
+	        objLogin = new LoginPage(driver);
+	         objLogin.setUsername(excelData.getCellData(1, 0));
+	         objLogin.setPassword(excelData.getCellData(1,1));
+	         objLogin.clickLogin();
 	        objtaining=new TrainingPage(driver);
 	        objtaining.clicktraining();
 	        objtaining.clicktrainingType();    
@@ -37,14 +34,14 @@ public class TrainingTest extends BaseTest {
 	 @Test(priority=2)
 	    public void traning_test() throws InterruptedException, IOException {
 	        ReadExcelData excelData = new ReadExcelData(constant.EXCEL_FILE_PATH,"Training");
-	        String username = excelData.getCellData(1, 0);
-	        String password = excelData.getCellData(1,1);
-	        String training_type = excelData.getCellData(1,2);
-	        performLogin(username, password);
+	        objLogin = new LoginPage(driver);
+	         objLogin.setUsername(excelData.getCellData(1, 0));
+	         objLogin.setPassword(excelData.getCellData(1,1));
+	         objLogin.clickLogin();
 	        objtaining=new TrainingPage(driver);
 	        objtaining.clicktraining();
 	        objtaining.clicktrainingType();
-	        objtaining.strtraintypename(training_type);	     
+	        objtaining.strtraintypename(excelData.getCellData(1,2));	     
 	        objtaining.clicksave();
 	        Assert.assertTrue(objtaining.getToastMessage());	        
 	

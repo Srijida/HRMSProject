@@ -24,6 +24,9 @@ public class AttendancePage {
 	  WebElement get;
 	  @FindBy (xpath="//input[@type='search']")
 	  WebElement search;
+	  @FindBy (xpath="//table[@id='xin_table']")
+	  WebElement attendanceResults;
+	
 	  public AttendancePage(WebDriver driver) {
 	        this.driver = driver;
 	        this.elementutility = new ElementUtility(driver); 
@@ -46,6 +49,18 @@ public class AttendancePage {
 		  elementutility.clickOnElement(search);
 	  }
 	 
-	  
+	 public boolean isSearchBoxDisplayed() {
+		 System.out.println("Search displayed");
+		        return search.isDisplayed();
+		        
+		    }
+		
+	 public boolean areResultsDisplayed() {
+		 System.out.println("Results displayed");
+		        return attendanceResults.isDisplayed();
+
+		    }
+		}
+
 	        
-}
+

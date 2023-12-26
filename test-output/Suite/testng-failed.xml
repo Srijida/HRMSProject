@@ -12,9 +12,16 @@
         <methods>
           <include name="takeScreenshotOnFailure"/>
           <include name="setUp"/>
-          <include name="tickets_test"/>
+          <include name="tickets_test_incomplete_data"/>
         </methods>
       </class> <!-- testcase.TicketsTest -->
+      <class name="testcase.EmployeeTest">
+        <methods>
+          <include name="takeScreenshotOnFailure"/>
+          <include name="setUp"/>
+          <include name="EmployeeDetails"/>
+        </methods>
+      </class> <!-- testcase.EmployeeTest -->
     </classes>
   </test> <!-- Test_Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

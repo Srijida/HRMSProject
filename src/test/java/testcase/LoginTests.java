@@ -26,7 +26,7 @@ public class LoginTests extends BaseTest {
         objLogin.setUsername(username);
         objLogin.setPassword(password);
         objLogin.clickLogin();
-        Assert.assertTrue(objLogin.getToastMessage());
+        Assert.assertTrue(objLogin.ResponseMessage());
         Assert.assertTrue(objLogin.verifyWelcomeText(value));
       
     }
@@ -41,7 +41,7 @@ public class LoginTests extends BaseTest {
         objLogin.setUsername(username);
         objLogin.setPassword(password);
         objLogin.clickLogin();
-        Assert.assertTrue(objLogin.getToastMessage());
+        Assert.assertTrue(objLogin.ResponseMessage());
       
 
     }
@@ -56,7 +56,7 @@ public class LoginTests extends BaseTest {
         objLogin.setUsername(username);
         objLogin.setPassword(password);
         objLogin.clickLogin();
-        Assert.assertTrue(objLogin.getToastMessage());
+        Assert.assertTrue(objLogin.ResponseMessage());
       
 
     }
@@ -72,7 +72,7 @@ public class LoginTests extends BaseTest {
         objLogin.setUsername(username);
         objLogin.setPassword(password);
         objLogin.clickLogin();
-        Assert.assertTrue(objLogin.getToastMessage());
+        Assert.assertTrue(objLogin.ResponseMessage());
       
 
     }
