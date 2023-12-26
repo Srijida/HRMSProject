@@ -8,7 +8,7 @@
         <parameter name="browser" value="chrome" />
         <parameter name="url" value="https://hrm.qabible.in/hrms/admin" />
     <classes>
-      <class name="testcase.TicketsTest"/>
+      <class name="testcase.EmployeeTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
